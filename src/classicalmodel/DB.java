@@ -7,8 +7,18 @@ public class DB {
     public DefaultTableModel getClientes(){
         DefaultTableModel datos = new DefaultTableModel();
         datos.addColumn("Numero");
+        datos.addColumn("Nombre de Cliente");
+        datos.addColumn("Apellido");
         datos.addColumn("Nombre");
         datos.addColumn("Telefono");
+        datos.addColumn("Direccion");
+        datos.addColumn("Direccion 2");
+        datos.addColumn("Ciudad");
+        datos.addColumn("Estado");
+        datos.addColumn("Codigo Postal");
+        datos.addColumn("País");
+        datos.addColumn("Nro de Empleado de Venta");
+        datos.addColumn("Limite de Credito");
         
         try{
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/classicmodels", "root", "1234");
@@ -18,10 +28,20 @@ public class DB {
             datos.setNumRows(0);
             
             while(res.next()){
-                Object[] fila = new Object[4];
+                Object[] fila = new Object[13];
                 fila[0] = res.getString("customerNumber");
                 fila[1] = res.getString("customerName");
-                fila[2] = res.getString("phone");
+                fila[2] = res.getString("contactLastName");
+                fila[3] = res.getString("contactFirstName");
+                fila[4] = res.getString("phone");
+                fila[5] = res.getString("addressLine1");
+                fila[6] = res.getString("addressLine2");
+                fila[7] = res.getString("city");
+                fila[8] = res.getString("state");
+                fila[9] = res.getString("postalCode");
+                fila[10] = res.getString("country");
+                fila[11] = res.getString("salesRepEmployeeNumber");
+                fila[12] = res.getString("creditLimit");
                 
                 
                 datos.addRow(fila);
@@ -92,9 +112,11 @@ public class DB {
             
             while(res.next()){
                 Object[] fila = new Object[5];
-                fila[0] = res.getString("productCode");
-                fila[1] = res.getString("quantityOrdered");
-                fila[2] = res.getString("priceEach");
+                fila[0] = res.getString("orderNumber");
+                fila[1] = res.getString("productCode");
+                fila[2] = res.getString("quantityOrdered");
+                fila[3] = res.getString("priceEach");
+                fila[4] = res.getString("orderLineNumber");
                 
                 datos.addRow(fila);
             }

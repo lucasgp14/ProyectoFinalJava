@@ -33,9 +33,13 @@ public class VentanaOrder extends javax.swing.JFrame {
         tablaDetalle = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaClientes = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        tablaOrdenes.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         tablaOrdenes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -51,6 +55,7 @@ public class VentanaOrder extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaOrdenes);
 
+        tablaDetalle.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         tablaDetalle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -61,6 +66,7 @@ public class VentanaOrder extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablaDetalle);
 
+        tablaClientes.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -76,27 +82,47 @@ public class VentanaOrder extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tablaClientes);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel1.setText("Clientes");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel2.setText("Pedidos");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel3.setText("Detalles");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane2))
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1)
+                        .addComponent(jScrollPane2)))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -152,6 +178,9 @@ public class VentanaOrder extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
