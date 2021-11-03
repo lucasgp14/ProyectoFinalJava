@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package classicalmodel;
+package view;
+
+import model.DB;
 
 /**
  *
@@ -15,6 +17,7 @@ public class VentanaOrder extends javax.swing.JFrame {
      */
     public VentanaOrder() {
         initComponents();
+        setLocationRelativeTo(null);
         tablaClientes.setModel(new DB().getClientes());
     }
 

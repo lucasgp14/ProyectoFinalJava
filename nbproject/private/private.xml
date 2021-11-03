@@ -4,8 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/classicalmodel/ProyectoFinalJava/src/classicalmodel/Main.java</file>
-            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/classicalmodel/ProyectoFinalJava/src/classicalmodel/DB.java</file>
-            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/classicalmodel/ProyectoFinalJava/src/classicalmodel/VentanaOrder.java</file>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/classicalmodel/ProyectoFinalJava/src/model/DB.java</file>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/classicalmodel/ProyectoFinalJava/src/controller/ControladorOrdenes.java</file>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/classicalmodel/ProyectoFinalJava/src/view/VentanaInicio.java</file>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/classicalmodel/ProyectoFinalJava/src/model/Inicio.java</file>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/classicalmodel/ProyectoFinalJava/src/controller/ControladorInicio.java</file>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/classicalmodel/ProyectoFinalJava/src/view/VentanaOrder.java</file>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/classicalmodel/ProyectoFinalJava/src/model/Clientes.java</file>
         </group>
     </open-files>
 </project-private>

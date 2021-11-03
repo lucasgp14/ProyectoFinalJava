@@ -1,9 +1,10 @@
 
-package classicalmodel;
+package model;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
 
 public class DB {
+    
     public DefaultTableModel getClientes(){
         DefaultTableModel datos = new DefaultTableModel();
         datos.addColumn("Numero");
@@ -29,7 +30,7 @@ public class DB {
             
             while(res.next()){
                 Object[] fila = new Object[13];
-                fila[0] = res.getString("customerNumber");
+                fila[0] = res.getInt("customerNumber");
                 fila[1] = res.getString("customerName");
                 fila[2] = res.getString("contactLastName");
                 fila[3] = res.getString("contactFirstName");
@@ -40,8 +41,8 @@ public class DB {
                 fila[8] = res.getString("state");
                 fila[9] = res.getString("postalCode");
                 fila[10] = res.getString("country");
-                fila[11] = res.getString("salesRepEmployeeNumber");
-                fila[12] = res.getString("creditLimit");
+                fila[11] = res.getInt("salesRepEmployeeNumber");
+                fila[12] = res.getDouble("creditLimit");
                 
                 
                 datos.addRow(fila);
@@ -75,13 +76,13 @@ public class DB {
             
             while(res.next()){
                 Object[] fila = new Object[7];
-                fila[0] = res.getString("orderNumber");
+                fila[0] = res.getInt("orderNumber");
                 fila[1] = res.getString("orderDate");
                 fila[2] = res.getString("requiredDate");
                 fila[3] = res.getString("shippedDate");
                 fila[4] = res.getString("status");
                 fila[5] = res.getString("comments");
-                fila[6] = res.getString("customerNumber");
+                fila[6] = res.getInt("customerNumber");
                 
                 datos.addRow(fila);
             }
@@ -112,11 +113,11 @@ public class DB {
             
             while(res.next()){
                 Object[] fila = new Object[5];
-                fila[0] = res.getString("orderNumber");
+                fila[0] = res.getInt("orderNumber");
                 fila[1] = res.getString("productCode");
-                fila[2] = res.getString("quantityOrdered");
-                fila[3] = res.getString("priceEach");
-                fila[4] = res.getString("orderLineNumber");
+                fila[2] = res.getInt("quantityOrdered");
+                fila[3] = res.getDouble("priceEach");
+                fila[4] = res.getInt("orderLineNumber");
                 
                 datos.addRow(fila);
             }
