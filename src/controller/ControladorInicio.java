@@ -1,10 +1,9 @@
 
 package controller;
 
-import view.VentanaOrder;
+import view.VentanaPrincipal;
 import java.sql.*;
 import model.Inicio;
-import view.VentanaInicio;
 
 public class ControladorInicio {
     public boolean probarInicio(Inicio s){
@@ -21,7 +20,7 @@ public class ControladorInicio {
         boolean p = probarInicio(s);
         
         if(p){
-            VentanaOrder v = new VentanaOrder();
+            VentanaPrincipal v = new VentanaPrincipal();
             v.setVisible(true);
         } else {
             text.setVisible(true);

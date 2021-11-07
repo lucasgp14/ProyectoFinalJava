@@ -1,6 +1,7 @@
 
 package model;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class DB {
@@ -53,6 +54,80 @@ public class DB {
         }
         
         return datos;
+    }
+        
+        public boolean NumeroClRepetido(String customerNumber){
+            boolean respuesta = false;
+        
+        try{
+            Connection c = DriverManager.getConnection(
+            "jdbc:mysql://localhost/classicmodels","root","1234");
+            
+            Statement s = c.createStatement();
+            ResultSet sql= s.executeQuery("select * from customers");
+            
+            while(sql.next()){
+            if(sql.getString("customerNumber") == customerNumber){
+                respuesta = true;
+                break;
+            }
+            }
+            
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return respuesta;
+        }
+        
+        public static ArrayList<String> LlenarCombo(){
+            ArrayList<String> lista = new ArrayList<String>();
+        try{
+            Connection c = DriverManager.getConnection(
+            "jdbc:mysql://localhost/classicmodels","root","1234");
+            
+            Statement s = c.createStatement();
+            ResultSet sql= s.executeQuery("select * from customers");
+            
+            while(sql.next()){
+                lista.add(sql.getString("salesRepEmployeeNumber"));
+            }
+            
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+            return lista;
+        }
+    
+        public void agregarCliente(String customerNumber, String customerName, String contactLastName, 
+                String contactFirstName, String phone, String addressLine1, String addressLine2, String city, 
+                String state, String postalCode, String country, String salesRepEmployeeNumber, String creditLimit){
+        try{
+        Connection con;
+        con = DriverManager.getConnection("jdbc:mysql://localhost/classicmodels","root","1234");
+        
+        PreparedStatement s = con.prepareStatement("insert into customers values (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        
+        s.setString(1, customerNumber);
+        s.setString(2, customerName);
+        s.setString(3, contactLastName);
+        s.setString(4, contactFirstName);
+        s.setString(5, phone);
+        s.setString(6, addressLine1);
+        s.setString(7, addressLine2);
+        s.setString(8, city);
+        s.setString(9, state);
+        s.setString(10, postalCode);
+        s.setString(11, country);
+        s.setString(12, salesRepEmployeeNumber);
+        s.setString(13, creditLimit);
+                
+        
+        s.executeUpdate();
+        
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
     }
     
     public DefaultTableModel getOrders(String cliente ){
@@ -128,4 +203,5 @@ public class DB {
         
         return datos;
     }
+     
 }

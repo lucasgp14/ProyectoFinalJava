@@ -32,9 +32,9 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         campoUsuario = new javax.swing.JTextField();
-        campoContraseña = new javax.swing.JTextField();
         botonIngreso = new javax.swing.JButton();
         labelError = new javax.swing.JLabel();
+        campoContraseña = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -51,15 +51,6 @@ public class VentanaInicio extends javax.swing.JFrame {
             }
         });
 
-        campoContraseña.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        campoContraseña.setForeground(new java.awt.Color(153, 153, 153));
-        campoContraseña.setText("Contraseña");
-        campoContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                campoContraseñaMouseClicked(evt);
-            }
-        });
-
         botonIngreso.setBackground(new java.awt.Color(255, 255, 255));
         botonIngreso.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         botonIngreso.setText("Ingresar");
@@ -73,6 +64,15 @@ public class VentanaInicio extends javax.swing.JFrame {
         labelError.setForeground(new java.awt.Color(255, 0, 0));
         labelError.setText("Usuario y/o contraseña incorrecto/s");
 
+        campoContraseña.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        campoContraseña.setForeground(new java.awt.Color(153, 153, 153));
+        campoContraseña.setText("Contraseña");
+        campoContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                campoContraseñaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,19 +80,18 @@ public class VentanaInicio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(campoUsuario)
+                            .addComponent(campoContraseña)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
                         .addComponent(botonIngreso))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(labelError))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(campoUsuario)
-                                .addComponent(campoContraseña, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addGap(37, 37, 37)
+                        .addComponent(labelError)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +102,7 @@ public class VentanaInicio extends javax.swing.JFrame {
                 .addComponent(campoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(campoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(botonIngreso)
                 .addGap(18, 18, 18)
                 .addComponent(labelError)
@@ -168,7 +167,7 @@ public class VentanaInicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonIngreso;
-    private javax.swing.JTextField campoContraseña;
+    private javax.swing.JPasswordField campoContraseña;
     private javax.swing.JTextField campoUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelError;
