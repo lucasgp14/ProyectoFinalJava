@@ -6,6 +6,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class DB {
     
+    Clientes cl = new Clientes();
+    
     public DefaultTableModel getClientes(){
         DefaultTableModel datos = new DefaultTableModel();
         datos.addColumn("Numero");
@@ -43,7 +45,7 @@ public class DB {
                 fila[9] = res.getString("postalCode");
                 fila[10] = res.getString("country");
                 fila[11] = res.getInt("salesRepEmployeeNumber");
-                fila[12] = res.getDouble("creditLimit");
+                fila[12] = res.getString("creditLimit");
                 
                 
                 datos.addRow(fila);
@@ -67,12 +69,11 @@ public class DB {
             ResultSet sql= s.executeQuery("select * from customers");
             
             while(sql.next()){
-            if(sql.getString("customerNumber") == customerNumber){
+            if(sql.getString("customerNumber").equals(customerNumber)){
                 respuesta = true;
-                break;
             }
             }
-            
+
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -99,28 +100,26 @@ public class DB {
             return lista;
         }
     
-        public void agregarCliente(String customerNumber, String customerName, String contactLastName, 
-                String contactFirstName, String phone, String addressLine1, String addressLine2, String city, 
-                String state, String postalCode, String country, String salesRepEmployeeNumber, String creditLimit){
+        public void agregarCliente(Clientes cl){
         try{
         Connection con;
         con = DriverManager.getConnection("jdbc:mysql://localhost/classicmodels","root","1234");
         
         PreparedStatement s = con.prepareStatement("insert into customers values (?,?,?,?,?,?,?,?,?,?,?,?,?)");
         
-        s.setString(1, customerNumber);
-        s.setString(2, customerName);
-        s.setString(3, contactLastName);
-        s.setString(4, contactFirstName);
-        s.setString(5, phone);
-        s.setString(6, addressLine1);
-        s.setString(7, addressLine2);
-        s.setString(8, city);
-        s.setString(9, state);
-        s.setString(10, postalCode);
-        s.setString(11, country);
-        s.setString(12, salesRepEmployeeNumber);
-        s.setString(13, creditLimit);
+        s.setString(1, cl.getCustomerNumber());
+        s.setString(2, cl.getCustomerName());
+        s.setString(3, cl.getContactLastName());
+        s.setString(4, cl.getContactFirstName());
+        s.setString(5, cl.getPhone());
+        s.setString(6, cl.getAddressLine1());
+        s.setString(7, cl.getAddressLine2());
+        s.setString(8, cl.getCity());
+        s.setString(9, cl.getState());
+        s.setString(10, cl.getPostalCode());
+        s.setString(11, cl.getCountry());
+        s.setString(12, cl.getSalesRepEmployeeNumber());
+        s.setString(13, cl.getCreditLimit());
                 
         
         s.executeUpdate();
@@ -128,6 +127,82 @@ public class DB {
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
+    }
+        
+    public void modificarCliente(Clientes c1){
+        try{
+        Connection con;
+        con = DriverManager.getConnection("jdbc:mysql://localhost/classicmodels","root","1234");
+        
+        PreparedStatement s = con.prepareStatement("update customers set customerName = ?, contactLastName = ?, contactFirstName = ?, phone = ?, addressLine1 = ?, addressLine2 = ?, city = ?, state = ?, postalCode = ?, country = ?, creditLimit = ? where customerNumber = ?");
+        
+        s.setString(1, c1.getCustomerName());
+        s.setString(2, c1.getContactLastName());
+        s.setString(3, c1.getContactFirstName());
+        s.setString(4, c1.getPhone());
+        s.setString(5, c1.getAddressLine1());
+        s.setString(6, c1.getAddressLine2());
+        s.setString(7, c1.getCity());
+        s.setString(8, c1.getState());
+        s.setString(9, c1.getPostalCode());
+        s.setString(10, c1.getCountry());
+        s.setString(11, c1.getCreditLimit());
+        s.setString(12, c1.getCustomerNumber());
+        
+        s.executeUpdate();
+        
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public DefaultTableModel buscarCliente(String customerNumber){
+        DefaultTableModel datos = new DefaultTableModel();
+        
+        datos.addColumn("Numero");
+        datos.addColumn("Nombre de Cliente");
+        datos.addColumn("Apellido");
+        datos.addColumn("Nombre");
+        datos.addColumn("Telefono");
+        datos.addColumn("Direccion");
+        datos.addColumn("Direccion 2");
+        datos.addColumn("Ciudad");
+        datos.addColumn("Estado");
+        datos.addColumn("Codigo Postal");
+        datos.addColumn("País");
+        datos.addColumn("Nro de Empleado de Venta");
+        datos.addColumn("Limite de Credito");
+        
+        try{
+        Connection con;
+        con = DriverManager.getConnection("jdbc:mysql://localhost/classicmodels","root","1234");
+        PreparedStatement s = con.prepareStatement("select * from customers where customerNumber like ?");
+        s.setString(1, "%" +customerNumber+ "%");
+        ResultSet res = s.executeQuery();
+        
+        while(res.next()){
+            Object[] fila = new Object[13];
+            fila[0] = res.getInt("customerNumber");
+            fila[1] = res.getString("customerName");
+            fila[2] = res.getString("contactLastName");
+            fila[3] = res.getString("contactFirstName");
+            fila[4] = res.getString("phone");
+            fila[5] = res.getString("addressLine1");
+            fila[6] = res.getString("addressLine2");
+            fila[7] = res.getString("city");
+            fila[8] = res.getString("state");
+            fila[9] = res.getString("postalCode");
+            fila[10] = res.getString("country");
+            fila[11] = res.getInt("salesRepEmployeeNumber");
+            fila[12] = res.getDouble("creditLimit");
+            datos.addRow(fila);
+        }
+        
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        
+        return datos;
     }
     
     public DefaultTableModel getOrders(String cliente ){
@@ -146,7 +221,6 @@ public class DB {
             sql.setString(1, cliente);
             ResultSet res = sql.executeQuery();
          
-            
             datos.setNumRows(0);
             
             while(res.next()){
@@ -163,6 +237,46 @@ public class DB {
             }
             
         }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return datos;
+    }
+    
+       public DefaultTableModel buscarOrden(String orderNumber){
+        DefaultTableModel datos = new DefaultTableModel();
+        
+        datos.addColumn("Numero");
+        datos.addColumn("Fecha de Orden");
+        datos.addColumn("Fecha Requerida");
+        datos.addColumn("Fecha de Envio");
+        datos.addColumn("Estado");
+        datos.addColumn("Comentarios");
+        datos.addColumn("Numero de Cliente");
+        
+        try{
+        Connection con;
+        con = DriverManager.getConnection("jdbc:mysql://localhost/classicmodels","root","1234");
+        PreparedStatement s = con.prepareStatement("select * from orders where orderNumber like ?");
+        
+        s.setString(1, "%" +orderNumber+ "%");
+        
+        ResultSet res = s.executeQuery();
+        
+        while(res.next()){
+            Object[] fila = new Object[7];
+            fila[0] = res.getInt("orderNumber");
+            fila[1] = res.getString("orderDate");
+            fila[2] = res.getString("requiredDate");
+            fila[3] = res.getString("shippedDate");
+            fila[4] = res.getString("status");
+            fila[5] = res.getString("comments");
+            fila[6] = res.getInt("customerNumber");
+                
+            datos.addRow(fila);
+        }
+        
+        }catch (SQLException e){
             System.out.println(e.getMessage());
         }
         
@@ -198,6 +312,43 @@ public class DB {
             }
             
         }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return datos;
+    }
+     
+     public DefaultTableModel buscarDetalleOrden(String productCode, String orderNumber){
+        DefaultTableModel datos = new DefaultTableModel();
+        
+        datos.addColumn("Numero de Orden");
+        datos.addColumn("Codigo");
+        datos.addColumn("Cantidad");
+        datos.addColumn("Precio Unitario");
+        datos.addColumn("Numero de Pedido de Línea");
+        
+        try{
+        Connection con;
+        con = DriverManager.getConnection("jdbc:mysql://localhost/classicmodels","root","1234");
+        PreparedStatement s = con.prepareStatement("select * from orderdetails where productCode like ? and orderNumber like ?");
+        
+        s.setString(1, "%" +productCode+ "%");
+        s.setString(2, "%" +orderNumber+ "%");
+        
+        ResultSet res = s.executeQuery();
+        
+        while(res.next()){
+            Object[] fila = new Object[5];
+            fila[0] = res.getInt("orderNumber");
+            fila[1] = res.getString("productCode");
+            fila[2] = res.getInt("quantityOrdered");
+            fila[3] = res.getDouble("priceEach");
+            fila[4] = res.getInt("orderLineNumber");
+                
+            datos.addRow(fila);
+        }
+        
+        }catch (SQLException e){
             System.out.println(e.getMessage());
         }
         

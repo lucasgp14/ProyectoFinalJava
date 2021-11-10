@@ -11,13 +11,10 @@ import static controller.ControladorPrincipal.*;
  * @author Lucas
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
-    /**
-     * Creates new form VentanaPrincipal
-     */
+    
     public VentanaPrincipal() {
         initComponents();
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);       
     }
 
     /**
@@ -29,8 +26,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        panelImage1 = new view.panelImage();
         botonOrder = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         botonMenu = new javax.swing.JMenu();
         menuClientes = new javax.swing.JMenu();
@@ -43,17 +41,43 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Bienvenido a ClassicModel!");
-
         botonOrder.setBackground(new java.awt.Color(255, 255, 255));
-        botonOrder.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        botonOrder.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         botonOrder.setText("Clientes/Pedidos");
+        botonOrder.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonOrderActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Bienvenido a ClassicModel!");
+
+        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
+        panelImage1.setLayout(panelImage1Layout);
+        panelImage1Layout.setHorizontalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelImage1Layout.createSequentialGroup()
+                .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelImage1Layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(jLabel1))
+                    .addGroup(panelImage1Layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(botonOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(166, Short.MAX_VALUE))
+        );
+        panelImage1Layout.setVerticalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addGap(73, 73, 73)
+                .addComponent(botonOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(295, Short.MAX_VALUE))
+        );
 
         botonMenu.setText("Opciones");
 
@@ -68,6 +92,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuClientes.add(itemAgregarCl);
 
         itemModificarCl.setText("Modificar Cliente");
+        itemModificarCl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemModificarClActionPerformed(evt);
+            }
+        });
         menuClientes.add(itemModificarCl);
 
         botonMenu.add(menuClientes);
@@ -93,24 +122,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(botonOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(61, Short.MAX_VALUE))
+            .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addGap(33, 33, 33)
-                .addComponent(botonOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
+            .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -123,6 +139,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void itemAgregarClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarClActionPerformed
         VentanaAgregarCliente();
     }//GEN-LAST:event_itemAgregarClActionPerformed
+
+    private void itemModificarClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModificarClActionPerformed
+        VentanaModificarCliente();
+    }//GEN-LAST:event_itemModificarClActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,5 +191,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenu menuClientes;
     private javax.swing.JMenu menuPedidos;
+    private view.panelImage panelImage1;
     // End of variables declaration//GEN-END:variables
 }

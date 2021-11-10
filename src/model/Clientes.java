@@ -3,31 +3,31 @@ package model;
 
 
 public class Clientes {
-    private int customerNumber;
-    private String custormeName;
-    private String contactLastName;
-    private String contactFistName;
-    private String phone;
-    private String addressline1;
-    private String addressline2;
-    private String city;
-    private String state;
-    private String postalCode;
-    private String country;
-    private int salesRepEmployeeNumber;
-    private double creditLimit;
+    public String customerNumber;
+    public String customerName;
+    public String contactLastName;
+    public String contactFirstName;
+    public String phone;
+    public String addressLine1;
+    public String addressLine2;
+    public String city;
+    public String state;
+    public String postalCode;
+    public String country;
+    public String salesRepEmployeeNumber;
+    public String creditLimit;
 
     public Clientes() {
     }
 
-    public Clientes(int customerNumber, String custormeName, String contactLastName, String contactFistName, String phone, String addressline1, String addressline2, String city, String state, String postalCode, String country, int salesRepEmployeeNumber, double creditLimit) {
+    public Clientes(String customerNumber, String customerName, String contactLastName, String contactFirstName, String phone, String addressLine1, String addressLine2, String city, String state, String postalCode, String country, String salesRepEmployeeNumber, String creditLimit) {
         this.customerNumber = customerNumber;
-        this.custormeName = custormeName;
+        this.customerName = customerName;
         this.contactLastName = contactLastName;
-        this.contactFistName = contactFistName;
+        this.contactFirstName = contactFirstName;
         this.phone = phone;
-        this.addressline1 = addressline1;
-        this.addressline2 = addressline2;
+        this.addressLine1 = addressLine1;
+        this.addressLine2 = addressLine2;
         this.city = city;
         this.state = state;
         this.postalCode = postalCode;
@@ -36,28 +36,20 @@ public class Clientes {
         this.creditLimit = creditLimit;
     }
 
-    public double getCreditLimit() {
-        return creditLimit;
-    }
-
-    public void setCreditLimit(double creditLimit) {
-        this.creditLimit = creditLimit;
-    }
-
-    public int getCustomerNumber() {
+    public String getCustomerNumber() {
         return customerNumber;
     }
 
-    public void setCustomerNumber(int customerNumber) {
+    public void setCustomerNumber(String customerNumber) {
         this.customerNumber = customerNumber;
     }
 
-    public String getCustormeName() {
-        return custormeName;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCustormeName(String custormeName) {
-        this.custormeName = custormeName;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getContactLastName() {
@@ -68,12 +60,12 @@ public class Clientes {
         this.contactLastName = contactLastName;
     }
 
-    public String getContactFistName() {
-        return contactFistName;
+    public String getContactFirstName() {
+        return contactFirstName;
     }
 
-    public void setContactFistName(String contactFistName) {
-        this.contactFistName = contactFistName;
+    public void setContactFirstName(String contactFirstName) {
+        this.contactFirstName = contactFirstName;
     }
 
     public String getPhone() {
@@ -84,20 +76,20 @@ public class Clientes {
         this.phone = phone;
     }
 
-    public String getAddressline1() {
-        return addressline1;
+    public String getAddressLine1() {
+        return addressLine1;
     }
 
-    public void setAddressline1(String addressline1) {
-        this.addressline1 = addressline1;
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
     }
 
-    public String getAddressline2() {
-        return addressline2;
+    public String getAddressLine2() {
+        return addressLine2;
     }
 
-    public void setAddressline2(String addressline2) {
-        this.addressline2 = addressline2;
+    public void setAddressLine2(String addressLine2) {
+        this.addressLine2 = addressLine2;
     }
 
     public String getCity() {
@@ -132,17 +124,25 @@ public class Clientes {
         this.country = country;
     }
 
-    public int getSalesRepEmployeeNumber() {
+    public String getSalesRepEmployeeNumber() {
         return salesRepEmployeeNumber;
     }
 
-    public void setSalesRepEmployeeNumber(int salesRepEmployeeNumber) {
+    public void setSalesRepEmployeeNumber(String salesRepEmployeeNumber) {
         this.salesRepEmployeeNumber = salesRepEmployeeNumber;
+    }
+
+    public String getCreditLimit() {
+        return creditLimit;
+    }
+
+    public void setCreditLimit(String creditLimit) {
+        this.creditLimit = creditLimit;
     }
 
     @Override
     public String toString() {
-        return "Clientes{" + "customerNumber=" + customerNumber + ", custormeName=" + custormeName + ", contactLastName=" + contactLastName + ", contactFistName=" + contactFistName + ", phone=" + phone + ", addressline1=" + addressline1 + ", addressline2=" + addressline2 + ", city=" + city + ", state=" + state + ", postalCode=" + postalCode + ", country=" + country + ", salesRepEmployeeNumber=" + salesRepEmployeeNumber + ", creditLimit=" + creditLimit + '}';
+        return "Clientes{" + "customerNumber=" + customerNumber + ", customerName=" + customerName + ", contactLastName=" + contactLastName + ", contactFirstName=" + contactFirstName + ", phone=" + phone + ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2 + ", city=" + city + ", state=" + state + ", postalCode=" + postalCode + ", country=" + country + ", salesRepEmployeeNumber=" + salesRepEmployeeNumber + ", creditLimit=" + creditLimit + '}';
     }
-            
+
 }

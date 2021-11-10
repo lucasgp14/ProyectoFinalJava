@@ -5,6 +5,8 @@
 package view;
 
 import controller.ControladorOrdenes;
+import javax.swing.JOptionPane;
+import model.Clientes;
 import model.DB;
 
 /**
@@ -31,23 +33,43 @@ public class VentanaOrder extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelFondo1 = new view.panelFondo();
+        botonBuscarCliente = new javax.swing.JButton();
+        campoBuscarCliente = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaOrdenes = new javax.swing.JTable();
+        botonBuscarOrden = new javax.swing.JButton();
+        campoBuscarOrden = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaDetalle = new javax.swing.JTable();
+        campoBuscarDetalleP = new javax.swing.JTextField();
+        botonBuscarDetalle = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaClientes = new javax.swing.JTable();
+        campoBuscarDetalleNO = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        botonBuscarCliente = new javax.swing.JButton();
-        campoBuscarCliente = new javax.swing.JTextField();
-        botonBuscarOrden = new javax.swing.JButton();
-        campoBuscarOrden = new javax.swing.JTextField();
-        campoBuscarDetalle = new javax.swing.JTextField();
-        botonBuscarDetalle = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        botonBuscarCliente.setBackground(new java.awt.Color(255, 255, 255));
+        botonBuscarCliente.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        botonBuscarCliente.setText("Buscar");
+        botonBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarClienteActionPerformed(evt);
+            }
+        });
+
+        campoBuscarCliente.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        campoBuscarCliente.setForeground(new java.awt.Color(153, 153, 153));
+        campoBuscarCliente.setText("Numero de Cliente");
+        campoBuscarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                campoBuscarClienteMouseClicked(evt);
+            }
+        });
 
         tablaOrdenes.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         tablaOrdenes.setModel(new javax.swing.table.DefaultTableModel(
@@ -65,6 +87,24 @@ public class VentanaOrder extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaOrdenes);
 
+        botonBuscarOrden.setBackground(new java.awt.Color(255, 255, 255));
+        botonBuscarOrden.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        botonBuscarOrden.setText("Buscar");
+        botonBuscarOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarOrdenActionPerformed(evt);
+            }
+        });
+
+        campoBuscarOrden.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        campoBuscarOrden.setForeground(new java.awt.Color(153, 153, 153));
+        campoBuscarOrden.setText("Numero de Pedido");
+        campoBuscarOrden.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                campoBuscarOrdenMouseClicked(evt);
+            }
+        });
+
         tablaDetalle.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         tablaDetalle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,6 +115,24 @@ public class VentanaOrder extends javax.swing.JFrame {
             }
         ));
         jScrollPane2.setViewportView(tablaDetalle);
+
+        campoBuscarDetalleP.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        campoBuscarDetalleP.setForeground(new java.awt.Color(153, 153, 153));
+        campoBuscarDetalleP.setText("Codigo");
+        campoBuscarDetalleP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                campoBuscarDetallePMouseClicked(evt);
+            }
+        });
+
+        botonBuscarDetalle.setBackground(new java.awt.Color(255, 255, 255));
+        botonBuscarDetalle.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        botonBuscarDetalle.setText("Buscar");
+        botonBuscarDetalle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarDetalleActionPerformed(evt);
+            }
+        });
 
         tablaClientes.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
@@ -92,92 +150,111 @@ public class VentanaOrder extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tablaClientes);
 
+        campoBuscarDetalleNO.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        campoBuscarDetalleNO.setForeground(new java.awt.Color(153, 153, 153));
+        campoBuscarDetalleNO.setText("Numero de Orden");
+        campoBuscarDetalleNO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                campoBuscarDetalleNOMouseClicked(evt);
+            }
+        });
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Clientes");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Pedidos");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Detalles");
 
-        botonBuscarCliente.setBackground(new java.awt.Color(255, 255, 255));
-        botonBuscarCliente.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        botonBuscarCliente.setText("Buscar");
-
-        campoBuscarCliente.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-
-        botonBuscarOrden.setBackground(new java.awt.Color(255, 255, 255));
-        botonBuscarOrden.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        botonBuscarOrden.setText("Buscar");
-
-        campoBuscarOrden.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-
-        campoBuscarDetalle.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-
-        botonBuscarDetalle.setBackground(new java.awt.Color(255, 255, 255));
-        botonBuscarDetalle.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        botonBuscarDetalle.setText("Buscar");
+        javax.swing.GroupLayout panelFondo1Layout = new javax.swing.GroupLayout(panelFondo1);
+        panelFondo1.setLayout(panelFondo1Layout);
+        panelFondo1Layout.setHorizontalGroup(
+            panelFondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFondo1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelFondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFondo1Layout.createSequentialGroup()
+                        .addGroup(panelFondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane3)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelFondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoBuscarDetalleP)
+                            .addGroup(panelFondo1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(campoBuscarDetalleNO, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelFondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(campoBuscarCliente, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(botonBuscarCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campoBuscarOrden, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(botonBuscarOrden, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botonBuscarDetalle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(55, 55, 55))
+                    .addGroup(panelFondo1Layout.createSequentialGroup()
+                        .addGroup(panelFondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        panelFondo1Layout.setVerticalGroup(
+            panelFondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFondo1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGroup(panelFondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFondo1Layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(campoBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(botonBuscarCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondo1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(panelFondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFondo1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondo1Layout.createSequentialGroup()
+                        .addComponent(campoBuscarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonBuscarOrden)))
+                .addGroup(panelFondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFondo1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFondo1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(campoBuscarDetalleNO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoBuscarDetalleP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonBuscarDetalle)))
+                .addGap(19, 19, 19))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jScrollPane2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(campoBuscarCliente)
-                            .addComponent(botonBuscarOrden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(campoBuscarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonBuscarDetalle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(campoBuscarDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(panelFondo1, javax.swing.GroupLayout.PREFERRED_SIZE, 1128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(campoBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonBuscarCliente))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(campoBuscarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonBuscarOrden))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(campoBuscarDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonBuscarDetalle))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+            .addComponent(panelFondo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -192,6 +269,68 @@ public class VentanaOrder extends javax.swing.JFrame {
        ControladorOrdenes s = new ControladorOrdenes();
        s.ConexionCliOr(tablaClientes, tablaOrdenes);
     }//GEN-LAST:event_tablaClientesMouseClicked
+
+    private void botonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarClienteActionPerformed
+        ControladorOrdenes s = new ControladorOrdenes();
+        
+        if(campoBuscarOrden.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Escriba el numero de Cliente", "Busqueda de Cliente", JOptionPane.WARNING_MESSAGE);
+        }else{
+            s.BuscarClientes(tablaClientes, campoBuscarCliente);
+        }
+        
+        campoBuscarCliente.setText("");
+        
+    }//GEN-LAST:event_botonBuscarClienteActionPerformed
+
+    private void botonBuscarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarOrdenActionPerformed
+        ControladorOrdenes s = new ControladorOrdenes();
+        
+        if(campoBuscarOrden.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Escriba el numero de Pedido", "Busqueda de Pedido", JOptionPane.WARNING_MESSAGE);
+        }else{
+            s.BuscarOrdenes(tablaOrdenes, campoBuscarOrden);
+        }
+            
+        campoBuscarOrden.setText("");
+    }//GEN-LAST:event_botonBuscarOrdenActionPerformed
+
+    private void botonBuscarDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarDetalleActionPerformed
+        ControladorOrdenes s = new ControladorOrdenes();
+        
+        if(campoBuscarDetalleNO.getText().equals("") && campoBuscarDetalleP.getText().equals("") ){
+            JOptionPane.showMessageDialog(null, "- Escriba el codigo de un Producto\n- Escriba el numero de Pedido", "Busqueda de Producto", JOptionPane.WARNING_MESSAGE);
+        }else if(campoBuscarDetalleNO.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Escriba el Numero de Pedido", "Busqueda de Producto", JOptionPane.WARNING_MESSAGE);
+        }else if(campoBuscarDetalleP.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Escriba el codigo de un Producto", "Busqueda de Producto", JOptionPane.WARNING_MESSAGE);
+        }else{
+            s.BuscarDetallesOrdenes(tablaDetalle, campoBuscarDetalleP, campoBuscarDetalleNO);
+        }
+        
+        campoBuscarDetalleNO.setText("");
+        campoBuscarDetalleP.setText("");
+    }//GEN-LAST:event_botonBuscarDetalleActionPerformed
+
+    private void campoBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoBuscarClienteMouseClicked
+        campoBuscarCliente.setText("");
+        campoBuscarCliente.setForeground(new java.awt.Color(0, 0, 0));
+    }//GEN-LAST:event_campoBuscarClienteMouseClicked
+
+    private void campoBuscarOrdenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoBuscarOrdenMouseClicked
+        campoBuscarOrden.setText("");
+        campoBuscarOrden.setForeground(new java.awt.Color(0, 0, 0));
+    }//GEN-LAST:event_campoBuscarOrdenMouseClicked
+
+    private void campoBuscarDetalleNOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoBuscarDetalleNOMouseClicked
+        campoBuscarDetalleNO.setText("");
+        campoBuscarDetalleNO.setForeground(new java.awt.Color(0, 0, 0));
+    }//GEN-LAST:event_campoBuscarDetalleNOMouseClicked
+
+    private void campoBuscarDetallePMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoBuscarDetallePMouseClicked
+        campoBuscarDetalleP.setText("");
+        campoBuscarDetalleP.setForeground(new java.awt.Color(0, 0, 0));
+    }//GEN-LAST:event_campoBuscarDetallePMouseClicked
 
     /**
      * @param args the command line arguments
@@ -233,7 +372,8 @@ public class VentanaOrder extends javax.swing.JFrame {
     private javax.swing.JButton botonBuscarDetalle;
     private javax.swing.JButton botonBuscarOrden;
     private javax.swing.JTextField campoBuscarCliente;
-    private javax.swing.JTextField campoBuscarDetalle;
+    private javax.swing.JTextField campoBuscarDetalleNO;
+    private javax.swing.JTextField campoBuscarDetalleP;
     private javax.swing.JTextField campoBuscarOrden;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -241,6 +381,7 @@ public class VentanaOrder extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private view.panelFondo panelFondo1;
     private javax.swing.JTable tablaClientes;
     private javax.swing.JTable tablaDetalle;
     private javax.swing.JTable tablaOrdenes;

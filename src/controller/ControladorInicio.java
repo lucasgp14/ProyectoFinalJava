@@ -3,6 +3,7 @@ package controller;
 
 import view.VentanaPrincipal;
 import java.sql.*;
+import javax.swing.JOptionPane;
 import model.Inicio;
 
 public class ControladorInicio {
@@ -20,8 +21,9 @@ public class ControladorInicio {
         boolean p = probarInicio(s);
         
         if(p){
+            JOptionPane.showMessageDialog(null, "Inicio de Sesión Correcto");
             VentanaPrincipal v = new VentanaPrincipal();
-            v.setVisible(true);
+            v.setVisible(true);           
         } else {
             text.setVisible(true);
         }

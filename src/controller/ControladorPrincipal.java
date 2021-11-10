@@ -2,6 +2,7 @@
 package controller;
 
 import view.VentanaAgregarCl;
+import view.VentanaModificarCl;
 import view.VentanaOrder;
 
 /**
@@ -17,5 +18,10 @@ public class ControladorPrincipal {
     public static void VentanaAgregarCliente(){
         VentanaAgregarCl vCl = new VentanaAgregarCl();
         vCl.setVisible(true);
+    }
+    
+    public static void VentanaModificarCliente(){
+        VentanaModificarCl vMCl = new VentanaModificarCl();
+        vMCl.setVisible(true);
     }
 }

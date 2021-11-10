@@ -24,4 +24,19 @@ public class ControladorOrdenes {
         
         tablaDetalle.setModel(new DB().getOrdersDetails(numero));
     }
+    
+    public void BuscarClientes(javax.swing.JTable tablaClientes, javax.swing.JTextField campoBuscarCliente){
+        DB db = new DB();
+        tablaClientes.setModel(db.buscarCliente(campoBuscarCliente.getText()));
+    }
+    
+    public void BuscarOrdenes(javax.swing.JTable tablaOrdenes, javax.swing.JTextField campoBuscarOrden){
+        DB db = new DB();
+        tablaOrdenes.setModel(db.buscarOrden(campoBuscarOrden.getText()));
+    }
+    
+    public void BuscarDetallesOrdenes(javax.swing.JTable tablaDetalle, javax.swing.JTextField campoBuscarDetalleP, javax.swing.JTextField campoBuscarDetalleNO){
+        DB db = new DB();
+        tablaDetalle.setModel(db.buscarDetalleOrden(campoBuscarDetalleP.getText(), campoBuscarDetalleNO.getText()));
+    }
 }
