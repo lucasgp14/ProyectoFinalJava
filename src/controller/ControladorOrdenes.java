@@ -4,6 +4,7 @@
  */
 package controller;
 
+import java.util.ArrayList;
 import model.DB;
 
 /**
@@ -38,5 +39,23 @@ public class ControladorOrdenes {
     public void BuscarDetallesOrdenes(javax.swing.JTable tablaDetalle, javax.swing.JTextField campoBuscarDetalleP, javax.swing.JTextField campoBuscarDetalleNO){
         DB db = new DB();
         tablaDetalle.setModel(db.buscarDetalleOrden(campoBuscarDetalleP.getText(), campoBuscarDetalleNO.getText()));
+    }
+    
+    public void LlenarComboStatus(ArrayList<String> lista, javax.swing.JComboBox boxEstado){
+        DB combo = new DB();
+        lista = combo.LlenarComboEstado();
+        
+        for(int i = 0; i<lista.size(); i++){
+        boxEstado.addItem(lista.get(i));
+        }
+    }
+    
+    public void LlenarComboCustomerN(ArrayList<String> lista, javax.swing.JComboBox boxNroCl){
+        DB combo = new DB();
+        lista = combo.LlenarComboNroCl();
+        
+        for(int i = 0; i<lista.size(); i++){
+        boxNroCl.addItem(lista.get(i));
+        }
     }
 }

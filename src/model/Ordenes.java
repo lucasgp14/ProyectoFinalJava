@@ -6,18 +6,18 @@ package model;
  * @author Lucas
  */
 public class Ordenes {
-    private int orderNumber;
-    private String orderDate;
-    private String requiredDate;
-    private String shippedDate;
-    private String status;
-    private String comments;
-    private int customerNumber;
+    public String orderNumber;
+    public String orderDate;
+    public String requiredDate;
+    public String shippedDate;
+    public String status;
+    public String comments;
+    public String customerNumber;
 
     public Ordenes() {
     }
 
-    public Ordenes(int orderNumber, String orderDate, String requiredDate, String shippedDate, String status, String comments, int customerNumber) {
+    public Ordenes(String orderNumber, String orderDate, String requiredDate, String shippedDate, String status, String comments, String customerNumber) {
         this.orderNumber = orderNumber;
         this.orderDate = orderDate;
         this.requiredDate = requiredDate;
@@ -27,19 +27,19 @@ public class Ordenes {
         this.customerNumber = customerNumber;
     }
 
-    public int getCustomerNumber() {
+    public String getCustomerNumber() {
         return customerNumber;
     }
 
-    public void setCustomerNumber(int customerNumber) {
+    public void setCustomerNumber(String customerNumber) {
         this.customerNumber = customerNumber;
     }
 
-    public int getOrderNumber() {
+    public String getOrderNumber() {
         return orderNumber;
     }
 
-    public void setOrderNumber(int orderNumber) {
+    public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
     }
 

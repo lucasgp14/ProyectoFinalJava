@@ -104,6 +104,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuPedidos.setText("Pedidos");
 
         itemAgregarPed.setText("Agregar Pedido");
+        itemAgregarPed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAgregarPedActionPerformed(evt);
+            }
+        });
         menuPedidos.add(itemAgregarPed);
 
         itemModificarPed.setText("Modificar Pedido");
@@ -143,6 +148,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void itemModificarClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModificarClActionPerformed
         VentanaModificarCliente();
     }//GEN-LAST:event_itemModificarClActionPerformed
+
+    private void itemAgregarPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarPedActionPerformed
+        VentanaAgregarPedido();
+    }//GEN-LAST:event_itemAgregarPedActionPerformed
 
     /**
      * @param args the command line arguments

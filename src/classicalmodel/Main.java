@@ -2,6 +2,7 @@
 package classicalmodel;
 
 import view.VentanaInicio;
+import view.VentanaPrincipal;
 
 /**
  *
@@ -9,8 +10,11 @@ import view.VentanaInicio;
  */
 public class Main {
     public static void main(String[] args) {
-        VentanaInicio v = new VentanaInicio();
-        v.setVisible(true);
+        //VentanaInicio v = new VentanaInicio();
+        //v.setVisible(true);
         
+        VentanaPrincipal v = new VentanaPrincipal();
+        v.setVisible(true);
+       
     }
 }

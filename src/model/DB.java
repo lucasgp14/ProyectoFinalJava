@@ -6,7 +6,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class DB {
     
-    Clientes cl = new Clientes();
+    Clientes o = new Clientes();
     
     public DefaultTableModel getClientes(){
         DefaultTableModel datos = new DefaultTableModel();
@@ -82,6 +82,7 @@ public class DB {
         }
         
         public static ArrayList<String> LlenarCombo(){
+            ArrayList<String> aux = new ArrayList<String>();
             ArrayList<String> lista = new ArrayList<String>();
         try{
             Connection c = DriverManager.getConnection(
@@ -94,10 +95,16 @@ public class DB {
                 lista.add(sql.getString("salesRepEmployeeNumber"));
             }
             
+            for(String a: lista){
+                if(!aux.contains(a)){
+                    aux.add(a);
+                }
+            }
+            
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-            return lista;
+            return aux;
         }
     
         public void agregarCliente(Clientes cl){
@@ -121,7 +128,6 @@ public class DB {
         s.setString(12, cl.getSalesRepEmployeeNumber());
         s.setString(13, cl.getCreditLimit());
                 
-        
         s.executeUpdate();
         
         }catch (SQLException e){
@@ -241,6 +247,136 @@ public class DB {
         }
         
         return datos;
+    }
+    
+    public DefaultTableModel getAllOrders(){
+        DefaultTableModel datos = new DefaultTableModel();
+        datos.addColumn("Numero");
+        datos.addColumn("Fecha de Orden");
+        datos.addColumn("Fecha Requerida");
+        datos.addColumn("Fecha de Envio");
+        datos.addColumn("Estado");
+        datos.addColumn("Comentarios");
+        datos.addColumn("Numero de Cliente");
+        
+        try{
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/classicmodels", "root", "1234");
+            PreparedStatement sql = con.prepareStatement("select * from orders");
+            ResultSet res = sql.executeQuery();
+         
+            datos.setNumRows(0);
+            
+            while(res.next()){
+                Object[] fila = new Object[7];
+                fila[0] = res.getInt("orderNumber");
+                fila[1] = res.getString("orderDate");
+                fila[2] = res.getString("requiredDate");
+                fila[3] = res.getString("shippedDate");
+                fila[4] = res.getString("status");
+                fila[5] = res.getString("comments");
+                fila[6] = res.getInt("customerNumber");
+                
+                datos.addRow(fila);
+            }
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return datos;
+    }
+    
+    public boolean NumeroPedRepetido(String orderNumber){
+            boolean respuesta = false;
+        
+        try{
+            Connection c = DriverManager.getConnection(
+            "jdbc:mysql://localhost/classicmodels","root","1234");
+            
+            Statement s = c.createStatement();
+            ResultSet sql= s.executeQuery("select * from orders");
+            
+            while(sql.next()){
+            if(sql.getString("orderNumber").equals(orderNumber)){
+                respuesta = true;
+            }
+            }
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return respuesta;
+        }
+        
+        public static ArrayList<String> LlenarComboEstado(){
+            ArrayList<String> lista = new ArrayList<String>();
+            ArrayList<String> aux = new ArrayList<String>();
+            
+        try{
+            Connection c = DriverManager.getConnection(
+            "jdbc:mysql://localhost/classicmodels","root","1234");
+            
+            Statement s = c.createStatement();
+            ResultSet sql= s.executeQuery("select * from orders");
+            
+            while(sql.next()){
+                lista.add(sql.getString("status"));
+            }
+            
+            for(String a: lista){
+                if(!aux.contains(a)){
+                    aux.add(a);
+                }
+            }
+            
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+            return aux;
+        }
+        
+        public static ArrayList<String> LlenarComboNroCl(){
+            
+            ArrayList<String> lista = new ArrayList<String>();
+        try{
+            Connection c = DriverManager.getConnection(
+            "jdbc:mysql://localhost/classicmodels","root","1234");
+            
+            Statement s = c.createStatement();
+            ResultSet sql= s.executeQuery("select * from orders");
+            
+            while(sql.next()){
+                lista.add(sql.getString("customerNumber"));
+            }
+            
+            
+            
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+            return lista;
+        }
+    
+        public void agregarOrden(Ordenes o){
+        try{
+        Connection con;
+        con = DriverManager.getConnection("jdbc:mysql://localhost/classicmodels","root","1234");
+        
+        PreparedStatement s = con.prepareStatement("insert into orders values (?,?,?,?,?,?,?)");
+        
+        s.setString(1, o.getOrderNumber());
+        s.setString(2, o.getOrderDate());
+        s.setString(3, o.getRequiredDate());
+        s.setString(4, o.getShippedDate());
+        s.setString(5, o.getStatus());
+        s.setString(6, o.getComments());
+        s.setString(7, o.getCustomerNumber());
+        s.executeUpdate();
+        
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
     }
     
        public DefaultTableModel buscarOrden(String orderNumber){

@@ -108,7 +108,9 @@ public class VentanaModificarCl extends javax.swing.JFrame {
         campoApellido.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
 
         campoNroEmpleado.setEditable(false);
+        campoNroEmpleado.setBackground(new java.awt.Color(153, 153, 153));
         campoNroEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        campoNroEmpleado.setForeground(new java.awt.Color(220, 220, 220));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -127,7 +129,9 @@ public class VentanaModificarCl extends javax.swing.JFrame {
         jLabel6.setText("Dirección (Linea 1)");
 
         campoNroCl.setEditable(false);
+        campoNroCl.setBackground(new java.awt.Color(153, 153, 153));
         campoNroCl.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        campoNroCl.setForeground(new java.awt.Color(220, 220, 220));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
